@@ -665,128 +665,70 @@ IaC で管理できない手順については、**手厚い手順ドキュメ�
 
 #### 5.1.4 メイン画面レイアウトモックアップ
 
+レイアウトモックアップは、別途HTMLファイルで提供しています。実際のレイアウトを確認するには、以下のHTMLファイルをブラウザで開いてください：
+
 ##### PC版レイアウト
+
+**ファイル:** `mockups/pc-layout.html`
 
 PC版では、横長レイアウトでユーザーリストとチャットを左右に配置：
 
-```mermaid
-graph TB
-    subgraph PCLayout["PC版メイン画面 (Desktop Layout)"]
-        Header["ヘッダー<br/>テーブル名 | 参加者数"]
-        
-        subgraph MainArea["メインエリア"]
-            subgraph LeftPanel["左パネル"]
-                subgraph UserList["ユーザーリスト<br/>(右クリックでメニュー)"]
-                    Voters["投票者 (Voters)<br/>👤 Alice [8] 🟢<br/>👤 Bob [?] 🟢<br/>👤 Carol [5] 🟡"]
-                    Observers["観察者 (Observers)<br/>👁️ Dave 🟢<br/>👁️ Eve 🔴"]
-                    Expelled["追い出し済み<br/>🚫 Frank"]
-                end
-            end
-            
-            subgraph CenterPanel["中央パネル"]
-                VotingArea["投票結果表示エリア<br/> (リベール後) <br/><br/>    [Alice:8] 🟡<br/>[Bob:5]  [Carol:13] 🔴<br/><br/>   参考代表値: 5<br/><br/>[Dave:8] 🟡  [Eve:5]<br/>    [Frank:3] 💛"]
-                VotingPanel["投票パネル<br/>[0][1][2][3][5][8][13][21][?][☕]"]
-            end
-            
-            subgraph RightPanel["右パネル"]
-                Chat["チャット<br/>━━━━━━━<br/>メッセージ履歴<br/>━━━━━━━<br/>入力フィールド"]
-            end
-        end
-        
-        Controls["操作ボタン: [リベール] [リセット] [設定]"]
-    end
-    
-    Header --> MainArea
-    MainArea --> Controls
-    
-    style Header fill:#e1f5ff
-    style UserList fill:#fff4e6
-    style Voters fill:#e8f5e9
-    style Observers fill:#f3e5f5
-    style Expelled fill:#ffebee
-    style VotingArea fill:#fff9c4
-    style VotingPanel fill:#e3f2fd
-    style Chat fill:#f1f8e9
-    style Controls fill:#fce4ec
-```
+**主要エリア:**
+- **ヘッダー**: テーブル名と参加者数を表示
+- **左パネル (ユーザーリスト)**: 
+  - 投票者セクション (緑背景)
+  - 観察者セクション (紫背景)
+  - 追い出し済みセクション (赤背景)
+  - ユーザー操作: ニックネーム部分を右クリックでコンテキストメニュー
+- **中央パネル**: 
+  - 投票結果表示エリア (リベール後、カードが代表値を囲むように配置)
+  - 投票パネル (0, 1, 2, 3, 5, 8, 13, 21, ?, ☕)
+- **右パネル (チャット)**: 
+  - メッセージ履歴
+  - メッセージ入力フィールド
+- **フッター (操作ボタン)**: リベール、リセット、設定
+
+**カラースキーム:**
+- ヘッダー: 水色系 (#e1f5ff)
+- ユーザーリスト: ベージュ系 (#fff4e6)
+- 投票結果エリア: 薄黄色系 (#fff9c4)
+- 投票パネル: 薄青系 (#e3f2fd)
+- チャット: 薄緑系 (#f1f8e9)
+- 操作ボタン: ピンク系 (#fce4ec)
 
 ##### モバイル版レイアウト
 
 モバイル版では、タブで画面を切り替える縦型レイアウト：
 
 **タブ1: 投票タブ**
-```mermaid
-graph TB
-    subgraph MobileVoting["モバイル版 - 投票タブ"]
-        MHeader1["ヘッダー<br/>テーブル名 | 参加者数"]
-        Tabs1["[投票] [ユーザー] [チャット]"]
-        
-        subgraph VotingTab["投票画面"]
-            MUserListCompact["参加者状況 (簡易表示)<br/>✓ Alice  ✓ Bob  ✓ Carol<br/>✓ Dave  - Eve"]
-            MVotingArea["投票結果<br/> (リベール後)<br/><br/>[Alice:8] 🟡<br/>[Bob:5] [Carol:13] 🔴<br/>参考代表値: 5<br/>[Dave:8] 🟡 [Eve:5]"]
-            MVotingPanel["投票パネル<br/>[0][1][2][3][5]<br/>[8][13][21][?][☕]"]
-            MControls1["[リベール] [リセット]"]
-        end
-    end
-    
-    MHeader1 --> Tabs1
-    Tabs1 --> VotingTab
-    
-    style MHeader1 fill:#e1f5ff
-    style Tabs1 fill:#e0e0e0
-    style MUserListCompact fill:#fff4e6
-    style MVotingArea fill:#fff9c4
-    style MVotingPanel fill:#e3f2fd
-    style MControls1 fill:#fce4ec
-```
+
+**ファイル:** `mockups/mobile-voting-tab.html`
+
+- ヘッダー: テーブル名と参加者数
+- タブナビゲーション: [投票] [ユーザー] [チャット]
+- 参加者状況 (簡易表示): 投票済みマークと参加者名
+- 投票結果表示エリア: カード配置と代表値
+- 投票パネル: グリッド配置のポイントボタン
+- 操作ボタン: リベール、リセット
 
 **タブ2: ユーザータブ**
-```mermaid
-graph TB
-    subgraph MobileUsers["モバイル版 - ユーザータブ"]
-        MHeader2["ヘッダー<br/>テーブル名 | 参加者数"]
-        Tabs2["[投票] [ユーザー] [チャット]"]
-        
-        subgraph UsersTab["ユーザー画面<br/>(長押しでメニュー)"]
-            MVoters["投票者<br/>👤 Alice [8] 🟢<br/>👤 Bob [?] 🟢<br/>👤 Carol [5] 🟡"]
-            MObservers["観察者<br/>👁️ Dave 🟢<br/>👁️ Eve 🔴"]
-            MExpelled["追い出し済み<br/>🚫 Frank"]
-            MSettings["設定<br/>[ロール変更] [離席中切替]"]
-        end
-    end
-    
-    MHeader2 --> Tabs2
-    Tabs2 --> UsersTab
-    
-    style MHeader2 fill:#e1f5ff
-    style Tabs2 fill:#e0e0e0
-    style MVoters fill:#e8f5e9
-    style MObservers fill:#f3e5f5
-    style MExpelled fill:#ffebee
-    style MSettings fill:#e3f2fd
-```
+
+**ファイル:** `mockups/mobile-users-tab.html`
+
+- ヘッダーとタブナビゲーション
+- ユーザー操作ヒント: 「ニックネームを長押しでメニュー表示」
+- 投票者セクション: 緑背景、投票状況表示
+- 観察者セクション: 紫背景
+- 追い出し済みセクション: 赤背景
+- 設定セクション: ロール変更、離席中切替ボタン
 
 **タブ3: チャットタブ**
-```mermaid
-graph TB
-    subgraph MobileChat["モバイル版 - チャットタブ"]
-        MHeader3["ヘッダー<br/>テーブル名 | 参加者数"]
-        Tabs3["[投票] [ユーザー] [チャット]"]
-        
-        subgraph ChatTab["チャット画面"]
-            MChatHistory["メッセージ履歴<br/>━━━━━━━<br/>Alice: 8ptで...<br/>Bob: 同意<br/>Carol: 13ptは...<br/>━━━━━━━"]
-            MChatInput["入力フィールド<br/>[メッセージ入力]<br/>[送信]"]
-        end
-    end
-    
-    MHeader3 --> Tabs3
-    Tabs3 --> ChatTab
-    
-    style MHeader3 fill:#e1f5ff
-    style Tabs3 fill:#e0e0e0
-    style MChatHistory fill:#f1f8e9
-    style MChatInput fill:#e8f5e9
-```
+
+**ファイル:** `mockups/mobile-chat-tab.html`
+
+- ヘッダーとタブナビゲーション
+- チャット履歴エリア: スクロール可能なメッセージリスト
+- メッセージ入力エリア: 入力フィールドと送信ボタン
 
 **レイアウト説明:**
 - **PC版**: 
@@ -794,7 +736,7 @@ graph TB
   - ユーザー操作: ニックネーム部分を右クリックでコンテキストメニュー
   - ユーザーリストは3つのセクションに分割
   - 投票結果は円形配置でテーブルを囲むイメージ
-  - テーブル中央に参考代表値を表示
+  - テーブル中央に代表値を表示
 - **モバイル版**: 
   - 3つのタブ (投票/ユーザー/チャット) で画面切り替え
   - ユーザー操作: ニックネーム部分を長押しでコンテキストメニュー
