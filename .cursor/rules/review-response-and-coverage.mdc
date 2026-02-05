@@ -1,0 +1,79 @@
+---
+description: Validate review comments before acting; add tests when needed; verify coverage for changed parts (when possible) with 80% as one benchmark
+alwaysApply: true
+---
+## Standard Rule for AI Guidances (AI ガイダンス規定, See meta-rule.rule-for-ai-guidances.mdc)
+- **Language**: English (required for AI cognitive load reduction).
+- **AI-Collaboration**: AI-assisted authoring and review is strongly recommended.
+- **Persistence**: This preamble MUST be preserved at the top of the rule body.
+- (英語記述必須 / AIによる作成・レビューを推奨 / 本前文を冒頭に保持すること)
+
+
+# Review Response and Coverage — Validity, Tests, and Coverage Check
+
+This rule applies when the agent **addresses review comments** or makes **code changes in response to review or similar feedback**. The agent MUST validate feedback before acting, add or update tests when the change warrants it, and verify test coverage for the changed parts when coverage can be computed.
+
+レビューコメント対応時に、妥当性確認→実装→必要ならテスト追加・カバレッジ確認→報告を行う。レビューコメント対応の品質確保を目的とし、PR レビュー対応を行う場合に適用される。
+
+## Scope
+
+- This rule applies when:
+  - The user asks to address or incorporate **review comments** (e.g. from a PR or code review), or
+  - The agent is making **code changes in response to feedback** that is analogous to review (e.g. "fix this comment", "address the review").
+- It does **not** apply to one-off questions, documentation-only edits without code, or changes where no review feedback is in scope.
+
+## Definition of "current change" (今回の変更)
+
+- **"Current change" (今回の変更)** denotes the set of all changes from a **branch point** to the **current state** of the working tree (e.g. the diff from the branch base to the current HEAD).
+- **Scope of search MUST NOT be narrowed**: When listing changed files, searching for leftover/unused code (e.g. added identifiers, i18n keys), or performing any analysis over 今回の変更, the scope **MUST** include **all** changed directories (e.g. `assets`, `lib`). Do **NOT** narrow to `lib` or `test` only; narrowing can cause items (e.g. unused i18n keys in `assets`) to be missed.
+- When a **topic branch** can be identified (e.g. a branch created from `main`, `master`, `develop`, or a similar integration branch), the agent **SHOULD** treat the branch point (the commit at which the topic branch was created) as the base for this set. The set of changes from that base to the current state is then **"current change" (今回の変更)**.
+- When no topic branch or branch point can be identified, "current change" **MAY** be interpreted as the set of added or modified portions in the context of the task (e.g. the files or lines the user or the review explicitly refers to).
+
+## Use of "current change" when addressing review comments
+
+- **Coverage**: The agent **MUST** perform coverage verification with respect to **"current change" (今回の変更)**. Coverage **SHOULD** be computed for the changed parts that fall within this set (see section 4).
+- **Scope of review comments**: A review comment that targets code or behaviour **outside** the current change (今回の変更) is **out of scope** unless the suggested change is **necessary** to achieve the goal of the work (e.g. to resolve the reported issue or deliver the stated feature). The agent **MUST NOT** treat as mandatory, or implement by default, changes that are outside the current change and not necessary for that goal. The agent **MAY** acknowledge such comments as out of scope and **MAY** suggest handling them in a separate change.
+
+## 1. Validate Review Comments Before Acting
+
+- **Before** implementing any change requested in a review comment, the agent **MUST** assess whether the comment is **valid and reasonable** (e.g. factually correct, aligned with project norms, and actionable).
+- The agent **MUST NOT** implement changes for review comments that are **not** valid (e.g. based on a misunderstanding, outdated, or contrary to agreed behaviour). Invalid or unreasonable comments **MUST NOT** be addressed; the agent **MAY** explain why a comment is not being applied instead of changing code.
+- **When the agent is not confident** that a comment is invalid or unreasonable, the agent **MUST** ask the user for confirmation **before** refusing to address it.
+- Only after confirming that a review comment is **valid** **SHOULD** the agent proceed to implement the requested change.
+
+## 2. Extended horizontal expansion (拡張された水平展開)
+
+- When addressing review comments, the agent **SHOULD** consciously perform **extended horizontal expansion**: apply the same fix or improvement not only to the **directly pointed** code, but also to **similar patterns within the same scope** (e.g. the same feature, file, or set of files that constitute the current change). The aim is to reduce follow-up review comments on the same kind of issue and to move toward code that would receive zero reviewer comments.
+- The agent **MUST NOT** expand beyond the logical scope of the work (e.g. do not change unrelated modules or components); scope creep must be avoided. Expansion stays within the boundary of the current change or the feature/task at hand.
+
+## 3. Changes and Test Need
+
+- When implementing a **valid** review comment (or analogous feedback), the agent **MUST** make the necessary code changes.
+- **For each such change**, the agent **MUST** evaluate whether the change **warrants new or updated tests** (e.g. new behaviour, bug fix, or edge case). The agent **MUST** add or update tests when the change warrants it; if the change does not warrant tests (e.g. comment-only or trivial formatting), the agent **MAY** skip adding tests but **SHOULD** document the reasoning briefly.
+- Test addition or update **SHOULD** be re-evaluated **per change** (or per logical unit of change), not only once per task.
+
+## 4. Test Coverage for Changed Parts
+
+- **After** completing the modifications (and any test additions or updates), the agent **SHOULD** compute **test coverage for "current change" (今回の変更)** — i.e. the changed parts that fall within the set defined above (e.g. lines or files from the branch point to the current state) — but **only when** coverage can be computed in the current environment (e.g. tooling and commands are available and the run succeeds).
+- If coverage **cannot** be computed (e.g. no coverage tool, unsupported stack, or run failure), the agent **MUST NOT** assert a coverage value; the agent **MAY** state that coverage was not computed and why.
+- When coverage **is** computed for the changed parts (current change), the agent **MUST** treat **80% or higher** as **one** acceptable benchmark for those parts. If the result is below 80%, the agent **SHOULD** report it and **MAY** suggest or add tests to improve coverage toward that benchmark, unless the user or project rules specify a different target.
+
+## 5. Report After Processing
+
+- **After** this rule has been applied and the related processing is complete, the agent **MUST** output a **report** on the application of this rule.
+- The report **MUST** be produced **per review comment** (or per logical unit of feedback addressed). For each such item, the report **MUST** include:
+  1. **Scope (current change)**: When relevant, whether the comment targets the current change (今回の変更) or outside it; if outside, whether it was treated as out of scope or as necessary for the goal.
+  2. **Validity verification result**: Whether the comment was judged valid and reasonable, invalid or unreasonable, or whether the user was asked for confirmation (e.g. when confidence was lacking).
+  3. **Test change necessity**: Whether test addition or update was required for the change; if not required, a brief reason (e.g. comment-only, trivial formatting).
+  4. **Coverage condition achievement**: For the current change (今回の変更), whether coverage was computed; if computed, whether the 80% benchmark (or the project target) was met, and the value or status (e.g. "met", "not met", "not computed").
+- The agent **MUST NOT** consider the processing complete until this report has been output.
+
+## 6. Summary
+
+- **Current change (今回の変更)**: When a topic branch can be identified, define it as the set of changes from the branch point to the current state; use it as the scope for coverage and for judging whether a review comment is in scope.
+- **Scope of comments**: Review comments that target code outside the current change are out of scope unless the change is necessary to achieve the goal of the work; do not treat them as mandatory.
+- **Validate first**: Only address review comments that are valid and reasonable; do not implement invalid or unreasonable ones.
+- **Extended horizontal expansion (拡張された水平展開)**: When addressing review comments, consciously apply the same fix or improvement to similar patterns within the same scope; do not expand beyond that scope.
+- **Tests per change**: For each change, decide if tests are needed; add or update tests when the change warrants it.
+- **Coverage when possible**: After changes, compute coverage for the current change when possible; when computed, use 80% or higher as one benchmark and report or improve if below.
+- **Report**: After processing, output a per-comment report covering validity result, test-change necessity, and coverage achievement.

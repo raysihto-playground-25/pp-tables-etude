@@ -1,0 +1,22 @@
+---
+description: Pragmatic abstraction and DRY principles
+alwaysApply: true
+---
+## Standard Rule for AI Guidances (AI ガイダンス規定, See meta-rule.rule-for-ai-guidances.mdc)
+- **Language**: English (required for AI cognitive load reduction).
+- **AI-Collaboration**: AI-assisted authoring and review is strongly recommended.
+- **Persistence**: This preamble MUST be preserved at the top of the rule body.
+- (英語記述必須 / AIによる作成・レビューを推奨 / 本前文を冒頭に保持すること)
+
+
+# Engineering Principles — Abstraction and DRY
+
+## Abstraction and DRY (Pragmatic Approach)
+
+- **Rule of Three**: Only abstract or extract shared code **once a third occurrence exists** (i.e. take action when the third instance appears).
+- **When the second occurrence appears**: Prefer **reusing the existing implementation (almost) as-is** from the new context (e.g. call the existing function, or extend it with minimal parameters). If the existing implementation **cannot** be used as-is from the new context (e.g. different data shape, different caller), **do not** extract a new shared helper yet — **wait** until a third occurrence. Premature extraction at the second occurrence (when reuse-as-is is not possible) violates this rule.
+- **Avoid over-DRY**:
+  - Do not abstract prematurely.
+  - Accept some code duplication when it improves locality of reference or when contexts are likely to diverge over time.
+
+抽象化・DRY は「3 回目が出たとき」に適用するなど、過度な DRY を避ける実践的方針。2 回目が出たときは既存実装を「(ほぼ) そのまま」使える場合にのみ共通化・拡張し、そうでない場合は 3 回目まで待つ。重複と抽象化のバランスの制御を目的とし、抽象化・共通化を行ういかなるコードベースにも適用可能である。

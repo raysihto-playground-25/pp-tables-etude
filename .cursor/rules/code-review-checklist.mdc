@@ -1,0 +1,52 @@
+---
+description: Code review — viewpoints (視座) and categories (カテゴリー). Apply when conducting or requesting code review.
+alwaysApply: false
+---
+## Standard Rule for AI Guidances (AI ガイダンス規定, See meta-rule.rule-for-ai-guidances.mdc)
+- **Language**: English (required for AI cognitive load reduction).
+- **AI-Collaboration**: AI-assisted authoring and review is strongly recommended.
+- **Persistence**: This preamble MUST be preserved at the top of the rule body.
+- (英語記述必須 / AIによる作成・レビューを推奨 / 本前文を冒頭に保持すること)
+
+
+# Code Review Checklist — Viewpoints and Categories
+
+This rule applies when the agent **conducts or is asked to conduct code review** (e.g. PR review, diff review). It defines **viewpoints (視座)** to hold and **categories (カテゴリー)** to check so that findings are comprehensive and consistent.
+
+コードレビュー時に用いる視座 (正しさ・失敗経路・一貫性・保守性) とカテゴリ (API・非同期・UX・パフォーマンス等) を定義する。PR レビューを体系的に行うことを目的とし、コードレビューを実施するいかなるプロジェクトにも適用可能である。
+
+## Scope of analysis
+
+When determining what files or directories to include in the review (e.g. when listing 今回の変更 or searching for leftover/unused code), **include all changed directories** (`assets`, `lib`, etc.). Do **NOT** narrow to `lib` or `test` only; narrowing can cause items (e.g. unused i18n keys in `assets`) to be missed.
+
+## Viewpoints (視座) — Apply as lenses for reasoning
+
+Review with these four viewpoints in mind. **Apply each viewpoint as a lens**: ask the corresponding question over the changed code and **reason** about implications (e.g. "If one of several parallel async operations fails, does the whole fail? Are partial success and boundaries handled?"). Do **not** limit review to matching code to category labels; use viewpoints to **derive** what to check. Findings can arise from this reasoning even when no category explicitly lists the case.
+
+For each changed flow or screen, ask the corresponding question and reason from it:
+
+| # | Viewpoint | Question to ask |
+|---|-----------|-----------------|
+| 1 | **Correctness of user-visible state** | Does the change avoid showing the user wrong state or success/failure? Are async outcomes and API return values reflected in the UI? |
+| 2 | **Failure paths and boundaries** | Are failure, error, null, and empty cases defined and handled consistently? Is nothing read before initialization or dependencies are ready? (Reason about the code: e.g. when there are multiple parallel async calls, does one failure fail the whole? Are partial successes still usable?) |
+| 3 | **Consistency of experience and display** | For the same kind of operation or data, are sort order, display content, and presence of feedback aligned with the rest of the app? (Reason: e.g. when the user switches context (e.g. reply target), does stale input or state remain and cause confusion or misoperation? Is there a way to cancel or dismiss an action?) |
+| 4 | **Maintainability and load** | Are there unnecessary re-renders, serialization, redundant code, or duplicate subscriptions? Is intent clear to readers? (Reason: e.g. does the number of parallel requests grow unbounded with input size (e.g. list length)? Is there risk of resource exhaustion or client-side DoS?) |
+
+## Categories (カテゴリー) — Concrete check items (not exhaustive)
+
+Use these categories to classify findings and as a checklist derived from the viewpoints. They are **not exhaustive**; apply viewpoints to reason about the code, and if a finding does not fit a category, still report it and consider whether a new category or viewpoint should be added.
+
+| # | Category | What to check |
+|---|----------|---------------|
+| 1 | API contract usage | Are return values (e.g. `bool`) checked before proceeding? Are they not ignored so that failure is treated as success? |
+| 2 | Async flow | Are `Future`-returning calls awaited? Is UI updated only after outcome is known (e.g. success)? |
+| 3 | UX consistency | Sort order, display names, and presence of failure feedback aligned with similar flows? |
+| 4 | Performance | Avoid `ref.watch` (or equivalent) inside list items or callbacks when only read is needed; prefer parallel over serial awaits where appropriate. **Is concurrency bounded?** (e.g. not passing an entire list of IDs to `Future.wait` so that parallel requests grow unbounded; consider batching or a concurrency limit to avoid resource exhaustion or client-side DoS risk.) |
+| 5 | State initialization | Are required initializations (e.g. fetching current user) invoked when the unit is initialized? |
+| 6 | Redundancy and clarity | Redundant try-catch, duplicate watches/subscriptions, and correct use of watch vs read (or equivalent). |
+| 7 | UI/display consistency | Same kind of UI elements (e.g. author name, avatar, toggle behavior) consistent with the rest of the feature; overlay/popup positioning robust across screen sizes; theme colors used instead of hardcoded colors where the project defines them. **When the user switches context (e.g. reply target), is input or state cleared so the UI matches the new context? Is there a way to cancel or dismiss an action (e.g. toggle to close)?** |
+
+## Output
+
+- For each finding: state **summary**, **recommended action**, and at least one **viewpoint** and one **category**.
+- When adding new findings to the project’s review findings database (if any), use the same format and update the viewpoint/category lists when a new one emerges.

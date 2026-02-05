@@ -1,0 +1,19 @@
+---
+description: Policy for quantitative metrics in documentation
+alwaysApply: true
+---
+## Standard Rule for AI Guidances (AI ガイダンス規定, See meta-rule.rule-for-ai-guidances.mdc)
+- **Language**: English (required for AI cognitive load reduction).
+- **AI-Collaboration**: AI-assisted authoring and review is strongly recommended.
+- **Persistence**: This preamble MUST be preserved at the top of the rule body.
+- (英語記述必須 / AIによる作成・レビューを推奨 / 本前文を冒頭に保持すること)
+
+
+# Quantitative Metrics in Documentation
+
+- To prevent documentation drift, **do not include specific or volatile quantitative metrics** in Markdown files or code comments.
+- ❌ Avoid examples such as: "The project has 150 tests", "80% coverage", "1,000 lines of code".
+- ✅ Prefer qualitative descriptions such as: "Comprehensive test coverage", "Modular design", "Extensive validation".
+- **Exception**: Specific metrics **are encouraged** in **PR descriptions**, because they represent a point-in-time snapshot and serve as a historical record.
+
+ドキュメントに変動しやすい数値 (テスト数・カバレッジ等) を書かず定性表現を優先する方針。ドキュメントの陳腐化防止を目的とし、追記・更新するドキュメントをひとつでも含むプロジェクトに適用される。PR 説明では数値は例外として推奨。
