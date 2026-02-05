@@ -1,0 +1,67 @@
+<svg width="375" height="667" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="375" height="667" fill="#ffffff"/>
+  
+  <!-- Border -->
+  <rect x="0" y="0" width="375" height="667" fill="none" stroke="#333" stroke-width="3" rx="20"/>
+  
+  <!-- Header -->
+  <rect x="3" y="3" width="369" height="60" fill="#e1f5ff" stroke="#333" stroke-width="2"/>
+  <text x="187" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Sprint 2024-Q1 見積もり</text>
+  <text x="187" y="50" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">参加者数: 6名</text>
+  
+  <!-- Tabs -->
+  <g id="tabs">
+    <rect x="3" y="63" width="123" height="40" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+    <text x="64" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">投票</text>
+    
+    <rect x="126" y="63" width="123" height="40" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+    <text x="187" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">ユーザー</text>
+    
+    <rect x="249" y="63" width="123" height="40" fill="#ffffff" stroke="#333" stroke-width="2"/>
+    <rect x="249" y="100" width="123" height="3" fill="#2196F3"/>
+    <text x="310" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">チャット</text>
+  </g>
+  
+  <!-- Content area -->
+  <g id="content" transform="translate(15, 115)">
+    <!-- Chat history area -->
+    <rect x="0" y="0" width="345" height="460" fill="#f1f8e9" stroke="#333" stroke-width="2" rx="4"/>
+    <text x="10" y="25" font-family="Arial, sans-serif" font-size="13" font-weight="bold">メッセージ履歴</text>
+    
+    <!-- Chat message 1 -->
+    <rect x="10" y="35" width="325" height="65" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="52" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2196F3">Alice <tspan fill="#999" font-weight="normal">14:23</tspan></text>
+    <text x="20" y="70" font-family="Arial, sans-serif" font-size="12">この機能は複雑だと思います</text>
+    
+    <!-- Chat message 2 -->
+    <rect x="10" y="108" width="325" height="65" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="125" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2196F3">Bob <tspan fill="#999" font-weight="normal">14:24</tspan></text>
+    <text x="20" y="143" font-family="Arial, sans-serif" font-size="12">同意します。8ptくらいかな</text>
+    
+    <!-- Chat message 3 -->
+    <rect x="10" y="181" width="325" height="65" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="198" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2196F3">Carol <tspan fill="#999" font-weight="normal">14:25</tspan></text>
+    <text x="20" y="216" font-family="Arial, sans-serif" font-size="12">もっと時間がかかりそう...</text>
+    
+    <!-- Chat message 4 -->
+    <rect x="10" y="254" width="325" height="65" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="271" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2196F3">Dave <tspan fill="#999" font-weight="normal">14:26</tspan></text>
+    <text x="20" y="289" font-family="Arial, sans-serif" font-size="12">テストも必要ですね</text>
+    
+    <!-- Chat message 5 -->
+    <rect x="10" y="327" width="325" height="80" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="344" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2196F3">Eve <tspan fill="#999" font-weight="normal">14:27</tspan></text>
+    <text x="20" y="362" font-family="Arial, sans-serif" font-size="12">UIの調整も含めて考えると</text>
+    <text x="20" y="379" font-family="Arial, sans-serif" font-size="12">13ptは必要かも</text>
+    
+    <!-- Chat input area -->
+    <rect x="0" y="470" width="345" height="75" fill="#e8f5e9" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="10" y="480" width="325" height="30" fill="#ffffff" stroke="#ccc" stroke-width="1" rx="4"/>
+    <text x="20" y="500" font-family="Arial, sans-serif" font-size="12" fill="#999">メッセージを入力...</text>
+    
+    <!-- Send button -->
+    <rect x="10" y="520" width="325" height="35" fill="#2196F3" stroke="#1976D2" stroke-width="2" rx="4"/>
+    <text x="172" y="543" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">送信</text>
+  </g>
+</svg>
