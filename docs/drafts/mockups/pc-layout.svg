@@ -4,17 +4,17 @@
   
   <!-- Header -->
   <rect x="0" y="0" width="1200" height="60" fill="#e1f5ff" stroke="#333" stroke-width="2"/>
-  <text x="20" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold">テーブル名: Sprint 2024-Q1 見積もり</text>
-  <text x="1050" y="35" font-family="Arial, sans-serif" font-size="14" fill="#666">参加者数: 6名</text>
+  <text x="20" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Table: Sprint 2024-Q1 Estimation</text>
+  <text x="1050" y="35" font-family="Arial, sans-serif" font-size="14" fill="#666">Participants: 6</text>
   
   <!-- Left Panel: User List -->
   <rect x="0" y="60" width="250" height="540" fill="#fff4e6" stroke="#333" stroke-width="2"/>
-  <text x="10" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold">ユーザーリスト</text>
-  <text x="10" y="105" font-family="Arial, sans-serif" font-size="11" fill="#666" font-style="italic">(右クリックでメニュー)</text>
+  <text x="10" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold">User List</text>
+  <text x="10" y="105" font-family="Arial, sans-serif" font-size="11" fill="#666" font-style="italic">(Right-click for menu)</text>
   
   <!-- Voters Section -->
   <rect x="10" y="115" width="230" height="130" fill="#e8f5e9" rx="4"/>
-  <text x="20" y="135" font-family="Arial, sans-serif" font-size="12" font-weight="bold">投票者 (Voters)</text>
+  <text x="20" y="135" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Voters</text>
   <text x="20" y="155" font-family="Arial, sans-serif" font-size="12">👤 Alice [8] 🟢</text>
   <text x="20" y="175" font-family="Arial, sans-serif" font-size="12">👤 Bob [?] 🟢</text>
   <text x="20" y="195" font-family="Arial, sans-serif" font-size="12">👤 Carol [5] 🟡</text>
@@ -22,12 +22,12 @@
   
   <!-- Observers Section -->
   <rect x="10" y="255" width="230" height="90" fill="#f3e5f5" rx="4"/>
-  <text x="20" y="275" font-family="Arial, sans-serif" font-size="12" font-weight="bold">観察者 (Observers)</text>
+  <text x="20" y="275" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Observers</text>
   <text x="20" y="295" font-family="Arial, sans-serif" font-size="12">👁️ Eve 🟢</text>
   
   <!-- Expelled Section -->
   <rect x="10" y="355" width="230" height="70" fill="#ffebee" rx="4"/>
-  <text x="20" y="375" font-family="Arial, sans-serif" font-size="12" font-weight="bold">追い出し済み (Expelled)</text>
+  <text x="20" y="375" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Expelled</text>
   <text x="20" y="395" font-family="Arial, sans-serif" font-size="12">🚫 Frank</text>
   
   <!-- Center Panel: Voting Area -->
@@ -35,11 +35,11 @@
   
   <!-- Voting Results Area -->
   <rect x="265" y="75" width="620" height="350" fill="#fff9c4" stroke="#333" stroke-width="2" rx="8"/>
-  <text x="575" y="100" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">投票結果表示エリア (リベール後)</text>
+  <text x="575" y="100" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Voting Results (After Reveal)</text>
   
   <!-- Table representation (central circle) -->
   <ellipse cx="575" cy="260" rx="80" ry="60" fill="#e0e0e0" stroke="#666" stroke-width="3"/>
-  <text x="575" y="250" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">代表値:</text>
+  <text x="575" y="250" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">Representative:</text>
   <text x="575" y="275" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">8</text>
   
   <!-- Cards surrounding the table -->
@@ -87,7 +87,7 @@
   
   <!-- Voting Panel -->
   <rect x="265" y="435" width="620" height="150" fill="#e3f2fd" stroke="#333" stroke-width="2" rx="8"/>
-  <text x="575" y="460" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">投票パネル</text>
+  <text x="575" y="460" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Voting Panel</text>
   
   <!-- Point buttons -->
   <g id="voting-buttons" transform="translate(300, 480)">
@@ -124,7 +124,7 @@
   
   <!-- Right Panel: Chat -->
   <rect x="900" y="60" width="300" height="540" fill="#f1f8e9" stroke="#333" stroke-width="2"/>
-  <text x="910" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold">チャット</text>
+  <text x="910" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Chat</text>
   
   <!-- Chat messages -->
   <rect x="910" y="95" width="280" height="400" fill="#ffffff" stroke="#ccc" stroke-width="1" rx="4"/>
@@ -134,18 +134,18 @@
   
   <!-- Chat input -->
   <rect x="910" y="505" width="280" height="35" fill="#ffffff" stroke="#ccc" stroke-width="1" rx="4"/>
-  <text x="920" y="527" font-family="Arial, sans-serif" font-size="12" fill="#999">メッセージを入力...</text>
+  <text x="920" y="527" font-family="Arial, sans-serif" font-size="12" fill="#999">Type a message...</text>
   
   <!-- Footer: Control Buttons -->
   <rect x="0" y="600" width="1200" height="100" fill="#fce4ec" stroke="#333" stroke-width="2"/>
   <g transform="translate(450, 635)">
     <rect x="0" y="0" width="100" height="40" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-    <text x="50" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">リベール</text>
+    <text x="50" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Reveal</text>
     
     <rect x="120" y="0" width="100" height="40" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-    <text x="170" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">リセット</text>
+    <text x="170" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Reset</text>
     
     <rect x="240" y="0" width="100" height="40" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-    <text x="290" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">設定</text>
+    <text x="290" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Settings</text>
   </g>
 </svg>

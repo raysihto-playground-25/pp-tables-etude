@@ -7,119 +7,95 @@
   
   <!-- Header -->
   <rect x="3" y="3" width="369" height="60" fill="#e1f5ff" stroke="#333" stroke-width="2"/>
-  <text x="187" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Sprint 2024-Q1 見積もり</text>
-  <text x="187" y="50" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">参加者数: 6名</text>
+  <text x="187" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Sprint 2024-Q1 Estimation</text>
+  <text x="187" y="50" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">Participants: 6</text>
   
   <!-- Tabs -->
   <g id="tabs">
     <rect x="3" y="63" width="123" height="40" fill="#ffffff" stroke="#333" stroke-width="2"/>
     <rect x="3" y="100" width="123" height="3" fill="#2196F3"/>
-    <text x="64" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">投票</text>
+    <text x="64" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Voting</text>
     
     <rect x="126" y="63" width="123" height="40" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
-    <text x="187" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">ユーザー</text>
+    <text x="187" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Users</text>
     
     <rect x="249" y="63" width="123" height="40" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
-    <text x="310" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">チャット</text>
+    <text x="310" y="88" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Chat</text>
   </g>
   
   <!-- Content area -->
   <g id="content" transform="translate(15, 115)">
-    <!-- Compact user status -->
-    <rect x="0" y="0" width="345" height="50" fill="#fff4e6" stroke="#333" stroke-width="1" rx="4"/>
-    <text x="5" y="18" font-family="Arial, sans-serif" font-size="12" font-weight="bold">参加者状況 (簡易表示)</text>
-    <text x="5" y="35" font-family="Arial, sans-serif" font-size="11">✓ Alice  ✓ Bob  ✓ Carol</text>
-    <text x="5" y="48" font-family="Arial, sans-serif" font-size="11">✓ Dave  - Eve</text>
+    <!-- Voting results area with cards surrounding table -->
+    <rect x="0" y="0" width="345" height="320" fill="#fff9c4" stroke="#333" stroke-width="2" rx="4"/>
+    <text x="172" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Voting Results (After Reveal)</text>
     
-    <!-- Voting results area -->
-    <rect x="0" y="60" width="345" height="260" fill="#fff9c4" stroke="#333" stroke-width="2" rx="4"/>
-    <text x="172" y="80" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">投票結果 (リベール後)</text>
+    <!-- Table representation (central circle) -->
+    <ellipse cx="172" cy="150" rx="50" ry="40" fill="#e0e0e0" stroke="#666" stroke-width="3"/>
+    <text x="172" y="145" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Representative:</text>
+    <text x="172" y="162" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">8</text>
     
-    <!-- Representative value display -->
-    <rect x="100" y="95" width="145" height="35" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-    <text x="172" y="118" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">代表値: 8</text>
-    
-    <!-- Cards in compact arrangement -->
-    <g transform="translate(40, 145)">
-      <!-- Top row -->
-      <g transform="translate(0, 0)">
-        <rect x="0" y="0" width="45" height="60" fill="#ffcc80" stroke="#333" stroke-width="2" rx="4"/>
-        <text x="22" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">5</text>
-        <text x="22" y="50" font-family="Arial, sans-serif" font-size="9" text-anchor="middle">Bob</text>
-      </g>
-      <g transform="translate(55, 0)">
-        <rect x="0" y="0" width="45" height="60" fill="#ffcc80" stroke="#333" stroke-width="2" rx="4"/>
-        <text x="22" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">5</text>
-        <text x="22" y="50" font-family="Arial, sans-serif" font-size="9" text-anchor="middle">Eve</text>
-      </g>
-      <g transform="translate(110, 0)">
-        <rect x="0" y="0" width="45" height="60" fill="#f0f0f0" stroke="#333" stroke-width="2" rx="4"/>
-        <text x="22" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">8</text>
-        <text x="22" y="50" font-family="Arial, sans-serif" font-size="9" text-anchor="middle">Alice</text>
-      </g>
-      <g transform="translate(165, 0)">
-        <rect x="0" y="0" width="45" height="60" fill="#f0f0f0" stroke="#333" stroke-width="2" rx="4"/>
-        <text x="22" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">8</text>
-        <text x="22" y="50" font-family="Arial, sans-serif" font-size="9" text-anchor="middle">Dave</text>
-      </g>
-      <g transform="translate(220, 0)">
-        <rect x="0" y="0" width="45" height="60" fill="#ffcc80" stroke="#333" stroke-width="2" rx="4"/>
-        <text x="22" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">13</text>
-        <text x="22" y="50" font-family="Arial, sans-serif" font-size="9" text-anchor="middle">Carol</text>
-      </g>
-      
-      <!-- Bottom row -->
-      <g transform="translate(90, 70)">
-        <rect x="0" y="0" width="45" height="60" fill="#ffcc80" stroke="#333" stroke-width="2" rx="4"/>
-        <text x="22" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">3</text>
-        <text x="22" y="50" font-family="Arial, sans-serif" font-size="9" text-anchor="middle">Frank</text>
-      </g>
+    <!-- Cards surrounding the table in circular arrangement -->
+    <!-- Card: Alice (8) - top -->
+    <g transform="translate(157, 50)">
+      <rect x="-18" y="-25" width="36" height="50" fill="#f0f0f0" stroke="#333" stroke-width="2" rx="4"/>
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">8</text>
+      <text x="0" y="15" font-family="Arial, sans-serif" font-size="8" text-anchor="middle">Alice</text>
     </g>
     
-    <!-- Voting panel -->
-    <rect x="0" y="330" width="345" height="140" fill="#e3f2fd" stroke="#333" stroke-width="2" rx="4"/>
-    <text x="172" y="350" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">投票パネル</text>
+    <!-- Card: Bob (5) - top-left -->
+    <g transform="translate(85, 80)">
+      <rect x="-18" y="-25" width="36" height="50" fill="#ffcc80" stroke="#333" stroke-width="2" rx="4"/>
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">5</text>
+      <text x="0" y="15" font-family="Arial, sans-serif" font-size="8" text-anchor="middle">Bob</text>
+    </g>
     
-    <!-- Point buttons in grid -->
-    <g transform="translate(30, 365)">
-      <rect x="0" y="0" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="25" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">0</text>
-      
-      <rect x="58" y="0" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="83" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">1</text>
-      
-      <rect x="116" y="0" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="141" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">2</text>
-      
-      <rect x="174" y="0" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="199" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">3</text>
-      
-      <rect x="232" y="0" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="257" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">5</text>
-      
-      <rect x="0" y="58" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="25" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">8</text>
-      
-      <rect x="58" y="58" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="83" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">13</text>
-      
-      <rect x="116" y="58" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="141" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">21</text>
-      
-      <rect x="174" y="58" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="199" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">?</text>
-      
-      <rect x="232" y="58" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="257" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">☕</text>
+    <!-- Card: Carol (13) - top-right -->
+    <g transform="translate(259, 80)">
+      <rect x="-18" y="-25" width="36" height="50" fill="#ffcc80" stroke="#333" stroke-width="2" rx="4"/>
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">13</text>
+      <text x="0" y="15" font-family="Arial, sans-serif" font-size="8" text-anchor="middle">Carol</text>
+    </g>
+    
+    <!-- Card: Dave (8) - bottom-left -->
+    <g transform="translate(85, 220)">
+      <rect x="-18" y="-25" width="36" height="50" fill="#f0f0f0" stroke="#333" stroke-width="2" rx="4"/>
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">8</text>
+      <text x="0" y="15" font-family="Arial, sans-serif" font-size="8" text-anchor="middle">Dave</text>
+    </g>
+    
+    <!-- Card: Eve (5) - left -->
+    <g transform="translate(50, 150)">
+      <rect x="-18" y="-25" width="36" height="50" fill="#ffcc80" stroke="#333" stroke-width="2" rx="4"/>
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">5</text>
+      <text x="0" y="15" font-family="Arial, sans-serif" font-size="8" text-anchor="middle">Eve</text>
+    </g>
+    
+    <!-- Card: Frank (3) - bottom-right -->
+    <g transform="translate(259, 220)">
+      <rect x="-18" y="-25" width="36" height="50" fill="#ffcc80" stroke="#333" stroke-width="2" rx="4"/>
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3</text>
+      <text x="0" y="15" font-family="Arial, sans-serif" font-size="8" text-anchor="middle">Frank</text>
+    </g>
+    
+    <!-- Voting panel with dropdown -->
+    <rect x="0" y="330" width="345" height="95" fill="#e3f2fd" stroke="#333" stroke-width="2" rx="4"/>
+    <text x="10" y="352" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Voting Panel</text>
+    
+    <!-- Dropdown select box -->
+    <g transform="translate(10, 362)">
+      <rect x="0" y="0" width="325" height="45" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
+      <text x="10" y="28" font-family="Arial, sans-serif" font-size="14">Select your vote...</text>
+      <!-- Dropdown arrow -->
+      <polygon points="300,18 310,18 305,25" fill="#666"/>
     </g>
     
     <!-- Control buttons -->
-    <g transform="translate(40, 480)">
+    <g transform="translate(40, 440)">
       <rect x="0" y="0" width="125" height="40" fill="#fce4ec" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="62" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">リベール</text>
+      <text x="62" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Reveal</text>
       
       <rect x="135" y="0" width="125" height="40" fill="#fce4ec" stroke="#333" stroke-width="2" rx="4"/>
-      <text x="197" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">リセット</text>
+      <text x="197" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Reset</text>
     </g>
   </g>
 </svg>
