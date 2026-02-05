@@ -148,11 +148,14 @@
 - 対象参加者が非アクティブ状態である
 
 **実行手順:**
-1. 参加者一覧で非アクティブな参加者の横に「追い出す」ボタンを表示
-2. ボタンをクリックすると確認ダイアログを表示
+1. 参加者一覧で各参加者のニックネーム部分をコンテキストメニュー操作
+   - **PC**: 右クリックでメニュー表示
+   - **モバイル**: 長押しでメニュー表示
+2. コンテキストメニューに「追い出す」オプションを表示（非アクティブな参加者のみ）
+3. 「追い出す」を選択すると確認ダイアログを表示
    - メッセージ: 「[ニックネーム]さんをテーブルから追い出しますか？」
    - 選択肢: 「追い出す」「キャンセル」
-3. 「追い出す」を選択すると、対象参加者をテーブルから退出させる
+4. 「追い出す」を選択すると、対象参加者をテーブルから退出させる
 
 **追い出し後の処理:**
 - 対象参加者の接続を切断
@@ -164,7 +167,10 @@
   - 参加者のニックネームは履歴内に残る
 
 **戻す操作:**
-- 追い出し済みセクションに表示されているユーザーの横に「戻す」ボタンを表示
+- 追い出し済みセクションに表示されているユーザーのニックネーム部分をコンテキストメニュー操作
+  - **PC**: 右クリックでメニュー表示
+  - **モバイル**: 長押しでメニュー表示
+- コンテキストメニューに「戻す」オプションを表示
 - 「戻す」をクリックすると、該当ユーザーの追い出し状態を解除
 - 戻された後、そのニックネームでの再入室が可能となる
 
@@ -258,15 +264,35 @@
 
 ポイントの大きさを視覚的に表現：
 
-**方法1: カードサイズ**
-- ポイントが大きいほどカードサイズを大きく表示
-- 例: 1pt (小)、13pt (中)、34+ (大)
-
-**方法2: 色分け**
+**色分け**
 - 低ポイント (0-2): 緑系
 - 中ポイント (3-8): 黄色系
 - 高ポイント (13-21): オレンジ系
 - 超高ポイント (34+): 赤系
+
+**投票結果の表示レイアウト**
+
+リベール後は、以下のようなレイアウトで投票結果を表示する：
+
+- **テーブル中央**: 仮想的なテーブル（または共有スペース）を表現
+- **カード配置**: テーブルを囲むようにカードを配置
+- **ユーザー識別**: 各カードの近くにユーザーニックネームを表示
+- **視覚的配置**: 
+  - 参加者が実際のテーブルを囲んで座っているイメージ
+  - カードは円形または楕円形の配置で、テーブルの周囲に等間隔で配置
+  - 各カードには投票したポイント数を表示
+  - カードの色は上記の色分けルールに従う
+
+**表示例 (概念図):**
+```
+        [Alice: 8]
+   [Bob: 5]    [Carol: 13]
+      
+   [Dave: 8]    [Eve: 5]
+        [Frank: 3]
+```
+
+この配置により、チーム全体の投票状況を一目で把握でき、対面でのプランニングポーカーに近い体験を提供する。
 
 #### 3.5.3 統計情報の表示
 
@@ -493,6 +519,8 @@ IaC で管理できない手順については、**手厚い手順ドキュメ�
 
 #### 5.1.2 入室画面
 - ニックネーム入力フィールド
+  - **ローカルストレージに前回のニックネームを保存**
+  - 次回訪問時、入力フィールドに自動フィル（ユーザーは変更可能）
 - ロール選択 (投票者/観察者)
 
 #### 5.1.3 メイン画面
@@ -505,8 +533,11 @@ IaC で管理できない手順については、**手厚い手順ドキュメ�
     - **観察者 (Observers)** セクション: 観察者ロールの参加者をグループ化して表示
     - **追い出し済み (Expelled)** セクション: 追い出されたユーザーをグループ化して表示
   - 各参加者のロール、状態 (離席中)、接続状態 (アクティブ/非アクティブ) を表示
-  - 非アクティブな参加者には「追い出す」ボタンを表示
-  - 追い出し済みユーザーには「戻す」ボタンを表示
+  - **参加者操作**: ユーザーニックネーム部分のコンテキストメニュー（PC: 右クリック、モバイル: 長押し）から「追い出す」「戻す」などの操作が可能
+- 中央: 投票結果表示エリア（リベール後）
+  - テーブルを囲むようにカードを配置
+  - 各カードの近くにユーザーニックネームを表示
+  - 色分けでポイントの大きさを視覚的に表現
 - 下部: 自分の投票パネル (ポイントカード選択)
 - 右側または下部: チャットエリア
 - 操作ボタン: リベール、リベール解除、リセット
@@ -514,50 +545,146 @@ IaC で管理できない手順については、**手厚い手順ドキュメ�
 
 #### 5.1.4 メイン画面レイアウトモックアップ
 
-以下にメイン画面のレイアウトをMermaidダイアグラムで示す：
+##### PC版レイアウト
+
+PC版では、横長レイアウトでユーザーリストとチャットを左右に配置：
 
 ```mermaid
 graph TB
-    subgraph MainScreen["メイン画面 (Main Screen)"]
-        Header["ヘッダー (Header)<br/>テーブル名 | 参加者数"]
+    subgraph PCLayout["PC版メイン画面 (Desktop Layout)"]
+        Header["ヘッダー<br/>テーブル名 | 参加者数"]
         
-        subgraph CenterArea["中央エリア (Center Area)"]
-            subgraph UserList["ユーザーリスト (User List)"]
-                VoterSection["投票者 (Voters)<br/>👤 Alice [8] 🟢<br/>👤 Bob [?] 🟢<br/>👤 Carol [5] 🟡"]
-                ObserverSection["観察者 (Observers)<br/>👁️ Dave 🟢<br/>👁️ Eve 🔴 [追い出す]"]
-                ExpelledSection["追い出し済み (Expelled)<br/>🚫 Frank [戻す]"]
+        subgraph MainArea["メインエリア"]
+            subgraph LeftPanel["左パネル"]
+                subgraph UserList["ユーザーリスト<br/>(右クリックでメニュー)"]
+                    Voters["投票者 (Voters)<br/>👤 Alice [8] 🟢<br/>👤 Bob [?] 🟢<br/>👤 Carol [5] 🟡"]
+                    Observers["観察者 (Observers)<br/>👁️ Dave 🟢<br/>👁️ Eve 🔴"]
+                    Expelled["追い出し済み<br/>🚫 Frank"]
+                end
             end
             
-            VotingResult["投票結果表示エリア<br/>(リベール後)"]
+            subgraph CenterPanel["中央パネル"]
+                VotingArea["投票結果表示エリア<br/>（リベール後）<br/><br/>    [Alice:8]<br/>[Bob:5]  [Carol:13]<br/><br/>[Dave:8]  [Eve:5]<br/>    [Frank:3]"]
+                VotingPanel["投票パネル<br/>[0][1][2][3][5][8][13][21][?][☕]"]
+            end
+            
+            subgraph RightPanel["右パネル"]
+                Chat["チャット<br/>━━━━━━━<br/>メッセージ履歴<br/>━━━━━━━<br/>入力フィールド"]
+            end
         end
         
-        VotingPanel["投票パネル (Voting Panel)<br/>[0] [1] [2] [3] [5] [8] [13] [21] [?] [☕]"]
-        
-        ChatArea["チャット (Chat)<br/>メッセージ履歴<br/>入力フィールド"]
-        
-        Controls["操作ボタン<br/>[リベール] [リセット] [設定]"]
+        Controls["操作ボタン: [リベール] [リセット] [設定]"]
     end
     
-    Header --> CenterArea
-    CenterArea --> VotingPanel
-    VotingPanel --> Controls
+    Header --> MainArea
+    MainArea --> Controls
     
     style Header fill:#e1f5ff
     style UserList fill:#fff4e6
-    style VoterSection fill:#e8f5e9
-    style ObserverSection fill:#f3e5f5
-    style ExpelledSection fill:#ffebee
+    style Voters fill:#e8f5e9
+    style Observers fill:#f3e5f5
+    style Expelled fill:#ffebee
+    style VotingArea fill:#fff9c4
     style VotingPanel fill:#e3f2fd
-    style ChatArea fill:#f1f8e9
+    style Chat fill:#f1f8e9
     style Controls fill:#fce4ec
 ```
 
+##### モバイル版レイアウト
+
+モバイル版では、タブで画面を切り替える縦型レイアウト：
+
+**タブ1: 投票タブ**
+```mermaid
+graph TB
+    subgraph MobileVoting["モバイル版 - 投票タブ"]
+        MHeader1["ヘッダー<br/>テーブル名 | 参加者数"]
+        Tabs1["[投票] [ユーザー] [チャット]"]
+        
+        subgraph VotingTab["投票画面"]
+            MUserListCompact["参加者状況（簡易表示）<br/>✓ Alice  ✓ Bob  ✓ Carol<br/>✓ Dave  - Eve"]
+            MVotingArea["投票結果<br/>（リベール後）<br/><br/>[Alice:8]<br/>[Bob:5] [Carol:13]<br/>[Dave:8] [Eve:5]"]
+            MVotingPanel["投票パネル<br/>[0][1][2][3][5]<br/>[8][13][21][?][☕]"]
+            MControls1["[リベール] [リセット]"]
+        end
+    end
+    
+    MHeader1 --> Tabs1
+    Tabs1 --> VotingTab
+    
+    style MHeader1 fill:#e1f5ff
+    style Tabs1 fill:#e0e0e0
+    style MUserListCompact fill:#fff4e6
+    style MVotingArea fill:#fff9c4
+    style MVotingPanel fill:#e3f2fd
+    style MControls1 fill:#fce4ec
+```
+
+**タブ2: ユーザータブ**
+```mermaid
+graph TB
+    subgraph MobileUsers["モバイル版 - ユーザータブ"]
+        MHeader2["ヘッダー<br/>テーブル名 | 参加者数"]
+        Tabs2["[投票] [ユーザー] [チャット]"]
+        
+        subgraph UsersTab["ユーザー画面<br/>(長押しでメニュー)"]
+            MVoters["投票者<br/>👤 Alice [8] 🟢<br/>👤 Bob [?] 🟢<br/>👤 Carol [5] 🟡"]
+            MObservers["観察者<br/>👁️ Dave 🟢<br/>👁️ Eve 🔴"]
+            MExpelled["追い出し済み<br/>🚫 Frank"]
+            MSettings["設定<br/>[ロール変更] [離席中切替]"]
+        end
+    end
+    
+    MHeader2 --> Tabs2
+    Tabs2 --> UsersTab
+    
+    style MHeader2 fill:#e1f5ff
+    style Tabs2 fill:#e0e0e0
+    style MVoters fill:#e8f5e9
+    style MObservers fill:#f3e5f5
+    style MExpelled fill:#ffebee
+    style MSettings fill:#e3f2fd
+```
+
+**タブ3: チャットタブ**
+```mermaid
+graph TB
+    subgraph MobileChat["モバイル版 - チャットタブ"]
+        MHeader3["ヘッダー<br/>テーブル名 | 参加者数"]
+        Tabs3["[投票] [ユーザー] [チャット]"]
+        
+        subgraph ChatTab["チャット画面"]
+            MChatHistory["メッセージ履歴<br/>━━━━━━━<br/>Alice: 8ptで...<br/>Bob: 同意<br/>Carol: 13ptは...<br/>━━━━━━━"]
+            MChatInput["入力フィールド<br/>[メッセージ入力]<br/>[送信]"]
+        end
+    end
+    
+    MHeader3 --> Tabs3
+    Tabs3 --> ChatTab
+    
+    style MHeader3 fill:#e1f5ff
+    style Tabs3 fill:#e0e0e0
+    style MChatHistory fill:#f1f8e9
+    style MChatInput fill:#e8f5e9
+```
+
 **レイアウト説明:**
-- PC版: ユーザーリストは左側、チャットは右側に配置
-- モバイル版: 縦スクロールまたはタブ切り替えで表示
-- ユーザーリストは3つのセクションに分割:
-  - 🟢 アクティブ、🟡 離席中、🔴 非アクティブ (接続状態)
-  - 投票済みユーザーは投票値を表示 (リベール前は自分のみ可視)
+- **PC版**: 
+  - ユーザーリストは左側、投票結果は中央、チャットは右側に配置
+  - ユーザー操作: ニックネーム部分を右クリックでコンテキストメニュー
+  - ユーザーリストは3つのセクションに分割
+  - 投票結果は円形配置でテーブルを囲むイメージ
+- **モバイル版**: 
+  - 3つのタブ（投票/ユーザー/チャット）で画面切り替え
+  - ユーザー操作: ニックネーム部分を長押しでコンテキストメニュー
+  - 投票タブには簡易参加者状況と投票結果を表示
+  - ユーザータブで詳細な参加者管理
+  - チャットタブで会話履歴を表示
+- **投票結果表示**: 
+  - テーブルを囲むようにカード配置
+  - 各カードの近くにユーザーニックネーム
+  - 色分けでポイントの大きさを視覚表現（緑→黄→橙→赤）
+  - 🟢 アクティブ、🟡 離席中、🔴 非アクティブ（接続状態）
 
 ### 5.2 レスポンシブデザイン
 
