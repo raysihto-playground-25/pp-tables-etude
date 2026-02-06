@@ -1,0 +1,71 @@
+<svg width="375" height="667" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="375" height="667" fill="#ffffff"/>
+  
+  <!-- Border -->
+  <rect x="0" y="0" width="375" height="667" fill="none" stroke="#333" stroke-width="3" rx="20"/>
+  
+  <!-- Header -->
+  <rect x="3" y="3" width="369" height="60" fill="#e1f5ff" stroke="#333" stroke-width="2"/>
+  <text x="187" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Sprint 2024-Q1 Estimation</text>
+  <text x="187" y="50" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">Participants: 6</text>
+  
+  <!-- Bottom Navigation Bar -->
+  <g id="bottom-nav">
+    <rect x="3" y="607" width="369" height="57" fill="#ffffff" stroke="#333" stroke-width="2"/>
+    
+    <!-- Voting tab -->
+    <g transform="translate(64, 615)">
+      <polygon points="0,10 10,0 20,10 15,10 15,20 5,20 5,10" fill="#757575"/>
+      <text x="10" y="35" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#757575">Voting</text>
+    </g>
+    
+    <!-- Users tab (active) -->
+    <g transform="translate(187, 615)">
+      <polygon points="0,10 10,0 20,10 15,10 15,20 5,20 5,10" fill="#2196F3"/>
+      <text x="10" y="35" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#2196F3">Users</text>
+    </g>
+    
+    <!-- Chat tab -->
+    <g transform="translate(310, 615)">
+      <polygon points="0,10 10,0 20,10 15,10 15,20 5,20 5,10" fill="#757575"/>
+      <text x="10" y="35" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#757575">Chat</text>
+    </g>
+  </g>
+  
+  <!-- Content area -->
+  <g id="content" transform="translate(15, 73)">
+    
+    <!-- Voters section -->
+    <rect x="0" y="0" width="345" height="145" fill="#e8f5e9" stroke="#333" stroke-width="1" rx="4"/>
+    <text x="10" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Voting者 (Voters)</text>
+    <rect x="10" y="30" width="325" height="30" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="50" font-family="Arial, sans-serif" font-size="12">👤 Alice [8] 🟢</text>
+    <rect x="10" y="65" width="325" height="30" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="85" font-family="Arial, sans-serif" font-size="12">👤 Bob [?] 🟢</text>
+    <rect x="10" y="100" width="325" height="30" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="120" font-family="Arial, sans-serif" font-size="12">👤 Carol [5] 🟡</text>
+    
+    <!-- Observers section -->
+    <rect x="0" y="155" width="345" height="100" fill="#f3e5f5" stroke="#333" stroke-width="1" rx="4"/>
+    <text x="10" y="175" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Observers</text>
+    <rect x="10" y="185" width="325" height="30" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="205" font-family="Arial, sans-serif" font-size="12">👁️ Dave 🟢</text>
+    <rect x="10" y="220" width="325" height="30" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="240" font-family="Arial, sans-serif" font-size="12">👁️ Eve 🔴</text>
+    
+    <!-- Expelled section -->
+    <rect x="0" y="265" width="345" height="80" fill="#ffebee" stroke="#333" stroke-width="1" rx="4"/>
+    <text x="10" y="285" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Expelled</text>
+    <rect x="10" y="295" width="325" height="30" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="4"/>
+    <text x="20" y="315" font-family="Arial, sans-serif" font-size="12">🚫 Frank</text>
+    
+    <!-- Settings section -->
+    <rect x="0" y="355" width="345" height="135" fill="#e3f2fd" stroke="#333" stroke-width="1" rx="4"/>
+    <text x="10" y="375" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Settings</text>
+    <rect x="10" y="385" width="325" height="35" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
+    <text x="172" y="407" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Change Role</text>
+    <rect x="10" y="430" width="325" height="35" fill="#ffffff" stroke="#333" stroke-width="2" rx="4"/>
+    <text x="172" y="452" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Toggle Away</text>
+  </g>
+</svg>
