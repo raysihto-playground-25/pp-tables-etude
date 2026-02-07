@@ -46,5 +46,5 @@ After these three required sections, additional sections **may** be added as app
 
 ## PR Communication
 
-- **Review traceability**: When addressing review comments, always reference the specific **commit hash** (e.g., `abc1234`) in your reply.
+- **Review traceability**: When addressing review comments, **reply to each individual review comment separately** with the specific **commit hash** (e.g., `abc1234`) that addresses that particular comment. Do **not** provide a single consolidated reply to multiple review comments; each comment thread requires its own reply with the relevant commit hash.
 - Do **not** resolve a review thread until the reviewer has confirmed the fix or the discussion is clearly concluded.

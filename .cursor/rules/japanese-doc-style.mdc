@@ -54,6 +54,22 @@ This rule defines style conventions for **Japanese documentation and comments** 
   - `データ` (data), `メモ` (memo), `パソコン` (personal computer - abbreviated form)
   - When in doubt, prefer the form with the long vowel mark.
 
+## ASCII Text in Japanese Context
+
+- When **ASCII sequences of 3 or more characters** appear within Japanese text, **you MUST include whitespace (half-width space)** before and after the ASCII sequence.
+  - ✅ Correct: `"あいうえお abc かきくけこ"`, `"しかし、 24h 以内とは？"`
+  - ❌ Avoid: `"あいうえお abcかきくけこ"`, `"しかし、 24h以内とは？"` (no space after ASCII)
+  - ❌ Avoid: `"あいうえおabc かきくけこ"`, `"しかし、24h 以内とは？"` (no space before ASCII)
+  - ❌ Avoid: `"あいうえおabcかきくけこ"`, `"しかし、24h以内とは？"` (no spaces at all)
+- This rule applies to:
+  - English words and technical terms (e.g., `API`, `GitHub`, `HTTP`)
+  - Alphanumeric codes and identifiers (e.g., `24h`, `v1.0`, `UTF-8`)
+  - Variable names and placeholders (e.g., `{role}`, `action`)
+- **Exceptions**:
+  - URLs and file paths can remain without additional spacing
+  - Code blocks and inline code (backtick-enclosed) follow their own spacing rules
+  - Single ASCII characters or 2-character sequences may use natural spacing per context
+
 ## General Guidance
 
 - These rules apply when generating or modifying:
