@@ -65,7 +65,7 @@
 - **{action}**: 実現したいこと - 行いたい行動や操作
 - **{benefit}**: 理由・価値 - なぜそれを行いたいのか
 
-詳細な定義と考察は [ストーリーカード運用ガイド](../story-card-concepts.md) を参照。
+詳細な定義と考察は [User Story-Driven Development Handbook](../user-story-driven-development-handbook.md) を参照。
 
 #### 1.4.3 定義済みユーザーロール
 
@@ -1184,7 +1184,7 @@ ChatMessage {
 
 本節では、本プロジェクト (プランニングポーカーアプリケーション) に固有のユーザーロールの詳細を記述する。
 
-ストーリーカードとユーザーストーリーに関する一般的・汎用的な概念については、[ストーリーカード運用ガイド](../story-card-concepts.md) を参照。
+ストーリーカードとユーザーストーリーに関する一般的・汎用的な概念については、[User Story-Driven Development Handbook](../user-story-driven-development-handbook.md) を参照。
 
 ### ユーザーロールの詳細説明
 
