@@ -8,6 +8,8 @@
 
 本ドキュメントは、Project X において**規範的 (normative)** である。
 
+本ドキュメントにおける要件レベルのキーワード（MUST、SHOULD、MAY など）は、BCP 14 [[RFC2119](https://www.rfc-editor.org/rfc/rfc2119)]、[[RFC8174](https://www.rfc-editor.org/rfc/rfc8174)] で定義された意味に従う。
+
 MUST とラベル付けされたすべての項目は必須である。
 SHOULD とラベル付けされた項目は、正当な例外が承認されない限り強く推奨される。
 MAY とラベル付けされた項目はオプションのプラクティスである。
@@ -18,12 +20,20 @@ MUST 要件からの逸脱は、明示的な承認と文書化を必要とする
 
 ## 要件レベル (Requirement Levels)
 
+本ドキュメントにおけるキーワード "MUST"、"MUST NOT"、"REQUIRED"、"SHALL"、"SHALL NOT"、"SHOULD"、"SHOULD NOT"、"RECOMMENDED"、"MAY"、および "OPTIONAL" は、BCP 14 [[RFC2119](https://www.rfc-editor.org/rfc/rfc2119)] [[RFC8174](https://www.rfc-editor.org/rfc/rfc8174)] に記載されているとおりに解釈されるものとします。ただし、ここに示すようにすべて大文字で表記されている場合に限ります。
+
 本ドキュメントでは以下の用語を使用する：
 
-- **MUST** (しなければならない): 絶対的な要件
-- **MUST NOT** (してはならない): 絶対的な禁止事項
-- **SHOULD** (すべきである): 推奨されるベストプラクティス
-- **MAY** (してもよい): オプション
+- **MUST** / **REQUIRED** / **SHALL** (しなければならない): 絶対的な要件
+- **MUST NOT** / **SHALL NOT** (してはならない): 絶対的な禁止事項
+- **SHOULD** / **RECOMMENDED** (すべきである): 推奨されるベストプラクティス。正当な理由がある場合は無視してもよいが、その影響を完全に理解する必要がある
+- **SHOULD NOT** / **NOT RECOMMENDED** (すべきでない): 特定の状況では妥当な理由があるかもしれないが、その影響を完全に理解する必要がある
+- **MAY** / **OPTIONAL** (してもよい): 真にオプション
+
+### 参考文献
+
+- [RFC2119] Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997, https://www.rfc-editor.org/rfc/rfc2119
+- [RFC8174] Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, May 2017, https://www.rfc-editor.org/rfc/rfc8174
 
 ---
 
