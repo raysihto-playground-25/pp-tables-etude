@@ -335,7 +335,31 @@ User Story Completion (ユーザーストーリーの完成)
 - [ ] すべての参加者が投票するまで、個別の投票内容は表示されない
 ```
 
-#### 形式2: Given-When-Then 形式
+#### 形式2: EARS (Easy Approach to Requirements Syntax) 形式
+
+EARS は、要求仕様を記述するための構造化された記法である。要求仕様に近しい AC を書く際に使いやすく、チェックリスト形式のやや厳格版として位置づけられる。ステークホルダーなど技術的基盤があまりない層にも説明しやすいというメリットがある。
+
+**重要**: 日本語で EARS を記述する場合であっても、キーワード (フォーマット部分) は英語のまま使用すること。EARS を用いるメリットを最大化するための規則である。
+
+EARS の主なパターン:
+
+| パターン | 構文 | 用途 |
+|--------|------|------|
+| ユビキタス (Ubiquitous) | `The <system> shall <response>` | 常に成立する要件 |
+| イベント駆動 (Event-driven) | `WHEN <trigger>, the <system> shall <response>` | イベント発生時の振る舞い |
+| 状態駆動 (State-driven) | `WHILE <state>, the <system> shall <response>` | 特定状態中の振る舞い |
+| 非歓迎 (Unwanted behavior) | `IF <condition>, THEN the <system> shall <response>` | エラー・例外の扱い |
+| オプション (Optional feature) | `WHERE <feature>, the <system> shall <response>` | 特定機能が含まれる場合 |
+
+```
+受け入れ条件:
+- WHEN 参加者が投票ボタンをクリックする, the システム shall 投票を記録する
+- WHEN 投票が記録される, the システム shall 参加者自身の投票内容を表示する
+- WHILE 投票ラウンドが公開前である, the システム shall 他の参加者には「投票済み」ステータスのみを表示する
+- WHEN すべての参加者が投票を完了する, the システム shall 全員の投票内容を公開する
+```
+
+#### 形式3: Given-When-Then 形式
 
 振る舞い駆動開発 (BDD) で使用される形式。シナリオベースで記述する。
 
@@ -349,7 +373,7 @@ User Story Completion (ユーザーストーリーの完成)
   And 他の参加者には「投票済み」ステータスのみが表示される
 ```
 
-#### 形式3: ルールベース形式
+#### 形式4: ルールベース形式
 
 複雑なビジネスルールや条件分岐がある場合に使用する。
 
