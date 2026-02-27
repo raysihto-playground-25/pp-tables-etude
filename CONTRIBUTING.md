@@ -145,11 +145,12 @@ While specific metrics should be avoided in documentation, **PR descriptions are
 
 When addressing individual review comments in a PR conversation, **always reference the commit hash** that addresses each specific comment.
 
-**Rationale**: This creates clear traceability in the GitHub PR conversation, making it easy to verify that each piece of feedback has been addressed.
+**Rationale**: This creates clear traceability in the GitHub PR conversation, making it easy to verify that each piece of feedback has been addressed. Replying directly inside the thread also enables the reviewer to mark it as resolved, which is the intended workflow.
 
 **How to respond**:
 
-- Reply to each conversation thread with the commit hash (short or full form) that addresses that specific feedback
+- **Reply directly inside each review thread** (click "Reply" within the inline thread on GitHub — not as a separate PR-level comment). This is what allows the thread to be resolved later.
+- Include the commit hash (short or full form) that addresses that specific feedback
 - A simple hash-only reply is acceptable (e.g., `abc1234`)
 - If the comment is addressed across multiple commits, reference all relevant hashes or provide a brief explanation (e.g., "Fixed across a1b2c3d and b2c3d4e due to refactoring split")
 - Do not resolve the review thread until the reviewer has confirmed the fix
