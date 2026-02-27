@@ -91,6 +91,16 @@ The **primary output** is what creates value for the repository's end users:
 - Changes only affect development, build, testing, or CI/CD processes
 - Examples: build tools, test frameworks, linters, formatters, CI action dependencies
 
+## Language and Writing Conventions
+
+### Japanese Writing Style
+
+For documents written in Japanese, this project follows a set of writing conventions defined in [`docs/conventions/japanese-writing-conventions.ja.md`](docs/conventions/japanese-writing-conventions.ja.md). Key rules include:
+
+- **Loanword long vowels**: Do not omit the long vowel mark (長音符「ー」) at the end of katakana loanwords. Write「セキュリティー」not「セキュリティ」,「ブラウザー」not「ブラウザ」, etc. (per 内閣告示第2号 and the [Microsoft Japanese Style Guide](https://learn.microsoft.com/ja-jp/globalization/reference/microsoft-style-guides))
+
+See the conventions document for a full list of rules and examples.
+
 ## Documentation and PR Guidelines
 
 ### Avoiding Specific Metrics in Documentation
@@ -135,20 +145,23 @@ While specific metrics should be avoided in documentation, **PR descriptions are
 
 When addressing individual review comments in a PR conversation, **always reference the commit hash** that addresses each specific comment.
 
-**Rationale**: This creates clear traceability in the GitHub PR conversation, making it easy to verify that each piece of feedback has been addressed.
+**Rationale**: This creates clear traceability in the GitHub PR conversation, making it easy to verify that each piece of feedback has been addressed. Replying directly inside the thread also enables the reviewer to mark it as resolved, which is the intended workflow.
 
 **How to respond**:
 
-- Reply to each conversation thread with the commit hash (short or full form) that addresses that specific feedback
-- A simple hash-only reply is acceptable (e.g., `abc1234`)
-- If the comment is addressed across multiple commits, reference all relevant hashes or provide a brief explanation (e.g., "Fixed across a1b2c3d and b2c3d4e due to refactoring split")
+- **Reply directly inside each review thread** (click "Reply" within the inline thread on GitHub — not as a separate PR-level comment). This is what allows the thread to be resolved later.
+- Include the commit hash that addresses that specific feedback. The full SHA is preferred (SHOULD) over the short form, as it is unambiguous.
+- **Write the hash as plain text — do NOT wrap it in inline code (backticks).** GitHub automatically turns a bare commit SHA into a clickable link, making it easy to navigate to the exact change. Wrapping it in backticks prevents this auto-linking.
+- A plain-text full hash alone is an acceptable and sufficient reply (no additional explanation needed in most cases)
+- If the comment is addressed across multiple commits, list all relevant hashes as plain text
 - Do not resolve the review thread until the reviewer has confirmed the fix
 
 **Examples**:
 
-- ✅ `a1b2c3d`
-- ✅ `a1b2c3d - refactored as suggested`
-- ✅ `Fixed in a1b2c3d and b2c3d4e`
+- ✅ a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2 — hash only (sufficient in most cases)
+- ✅ a1b2c3d4e5f6... — refactored as suggested
+- ✅ a1b2c3d4e5f6... and b2c3d4e5f6... — multiple commits
+- ❌ `a1b2c3d` — backticks prevent GitHub from auto-linking the hash
 
 ## Code Quality Guidelines
 

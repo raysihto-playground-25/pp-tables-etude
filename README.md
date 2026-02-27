@@ -19,7 +19,7 @@ This repository is in an early phase. A draft specification is available under `
 ## Documentation
 
 - [Contributing guidelines](CONTRIBUTING.md) — commit format (Conventional Commits), PR titles, documentation and review practices, code quality and naming.
-- [Draft specification](docs/drafts/specifications_rev1.draft.md) — detailed requirements (in Japanese).
+- [Draft specification](docs/drafts/specifications_rev1.draft.ja.md) — detailed requirements (in Japanese).
 
 ## License
 
