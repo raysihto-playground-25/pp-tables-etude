@@ -91,6 +91,16 @@ The **primary output** is what creates value for the repository's end users:
 - Changes only affect development, build, testing, or CI/CD processes
 - Examples: build tools, test frameworks, linters, formatters, CI action dependencies
 
+## Language and Writing Conventions
+
+### Japanese Writing Style
+
+For documents written in Japanese, this project follows a set of writing conventions defined in [`docs/conventions/japanese-writing-conventions.md`](docs/conventions/japanese-writing-conventions.md). Key rules include:
+
+- **Loanword long vowels**: Do not omit the long vowel mark (長音符「ー」) at the end of katakana loanwords. Write「セキュリティー」not「セキュリティ」,「ブラウザー」not「ブラウザ」, etc. (per 内閣告示第2号 and the [Microsoft Japanese Style Guide](https://learn.microsoft.com/ja-jp/globalization/reference/microsoft-style-guides))
+
+See the conventions document for a full list of rules and examples.
+
 ## Documentation and PR Guidelines
 
 ### Avoiding Specific Metrics in Documentation
