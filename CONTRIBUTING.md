@@ -152,15 +152,15 @@ When addressing individual review comments in a PR conversation, **always refere
 - **Reply directly inside each review thread** (click "Reply" within the inline thread on GitHub — not as a separate PR-level comment). This is what allows the thread to be resolved later.
 - Include the commit hash that addresses that specific feedback. The full SHA is preferred (SHOULD) over the short form, as it is unambiguous.
 - **Write the hash as plain text — do NOT wrap it in inline code (backticks).** GitHub automatically turns a bare commit SHA into a clickable link, making it easy to navigate to the exact change. Wrapping it in backticks prevents this auto-linking.
-- A hash-only reply is acceptable (e.g., `abc1234ef5678...` written without backticks)
-- If the comment is addressed across multiple commits, reference all relevant hashes or provide a brief explanation (e.g., "Fixed across a1b2c3d... and b2c3d4e...")
+- A plain-text full hash alone is an acceptable and sufficient reply (no additional explanation needed in most cases)
+- If the comment is addressed across multiple commits, list all relevant hashes as plain text
 - Do not resolve the review thread until the reviewer has confirmed the fix
 
 **Examples**:
 
-- ✅ a1b2c3d4e5f6...
-- ✅ a1b2c3d4e5f6... - refactored as suggested
-- ✅ Fixed in a1b2c3d... and b2c3d4e...
+- ✅ a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2 — hash only (sufficient in most cases)
+- ✅ a1b2c3d4e5f6... — refactored as suggested
+- ✅ a1b2c3d4e5f6... and b2c3d4e5f6... — multiple commits
 - ❌ `a1b2c3d` — backticks prevent GitHub from auto-linking the hash
 
 ## Code Quality Guidelines
